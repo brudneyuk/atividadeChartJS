@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .text {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #myChart1,
+    #myChart2 {
+        height: 100px;
+        width: 700px;
+    }
+
+    .linegraph,
+    .bargraph {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+    }
+
+    #barrinha {
+        margin-left: -16px;
+    }
+</style>
+
+<body>
+    <div class="text">
+        <h1>Gráficos de Temperatura e Umidade</h1>
+        <h4>Aluno: Brudney Juvencio Ramos Junior</h4>
+    </div>
+    <div class="container">
+        <div class="linegraph">
+            <div>
+                <canvas id="myChart1"></canvas>
+            </div>
+            <div class="imglinha">
+                <img src="7d3330fa-0b9d-49e1-9b46-bcbb0d3cdcfb.jpg" alt="dados grafico em linha">
+            </div>
+        </div>
+        <div class="bargraph">
+            <div>
+                <canvas id="myChart2"></canvas>
+            </div>
+            <img id="barrinha" src="218c5e70-55bd-47be-adae-41b509e79bc2.jpg" alt="dados grafico em barra">
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    const linha = document.getElementById('myChart1');
+
+    new Chart(linha, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                backgroundColor: 'rgba(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132)',
+                borderWidth: 4
+            },
+            {
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                backgroundColor: 'rgba(54, 162, 235)',
+                borderColor: 'rgba(54, 162, 235)',
+                borderWidth: 4
+            }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const barra = document.getElementById('myChart2');
+
+    new Chart(barra, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                backgroundColor: 'rgba(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132)',
+            },
+            {
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                backgroundColor: 'rgba(54, 162, 235)',
+                borderColor: 'rgba(54, 162, 235)',
+            }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
